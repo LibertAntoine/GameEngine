@@ -11,9 +11,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Game\Log.cpp" />
     <ClCompile Include="src\Game\Application.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Game\Log.h" />
     <ClInclude Include="src\GameEngine.h" />
     <ClInclude Include="src\Game\Application.h" />
     <ClInclude Include="src\Game\Core.h" />
@@ -66,6 +68,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_ALL;WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)GameEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,6 +83,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GE_PLATFORM_WINDOWS;GE_BUILD_ALL;WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(SolutionDir)GameEngine\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
