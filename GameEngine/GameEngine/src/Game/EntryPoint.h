@@ -8,11 +8,10 @@ int main(int argc, char** argv)
 {
 	GameEngine::Log::Init();
 	GE_CORE_WARN("Initialized Log!");
-	GE_CLIENT_INFO("Hello!");
 
 	auto app = GameEngine::CreateApplication();
 	app->Run();
-	delete app;
+	delete app; 
 }
 
 #endif

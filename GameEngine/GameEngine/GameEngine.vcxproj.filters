@@ -4,6 +4,9 @@
     <Filter Include="Game">
       <UniqueIdentifier>{7FA9857C-6BE0-860D-14CD-6C1000E3020F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Events">
+      <UniqueIdentifier>{83D08B0A-EF85-0400-787A-FED6E42EFB03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Application.h">
@@ -15,10 +18,25 @@
     <ClInclude Include="src\Game\EntryPoint.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Events\ApplicationEvent.h">
+      <Filter>Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Events\Event.h">
+      <Filter>Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Events\KeyEvent.h">
+      <Filter>Game\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Events\MouseEvent.h">
+      <Filter>Game\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Log.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine.h" />
+    <ClInclude Include="src\gepch.h" />
+    <ClInclude Include="src\Game\Window.h" />
+    <ClInclude Include="src\Platform\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Application.cpp">
@@ -27,5 +45,7 @@
     <ClCompile Include="src\Game\Log.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\gepch.cpp" />
+    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

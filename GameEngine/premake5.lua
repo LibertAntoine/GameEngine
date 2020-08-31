@@ -10,6 +10,12 @@ workspace "GameEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
+
+-- Include PreMake File of glfw
+include "GameEngine/vendor/glfw"
+
 project "GameEngine"
 	location "GameEngine"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "GameEngine"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "gepch.h"
+	pchsource "GameEngine/src/gepch.cpp"
 
 	files 
 	{
@@ -26,13 +35,21 @@ project "GameEngine"
 
 	includedirs
 	{
-		"GameEngine/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"GameEngine/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links 
+	{
+		"GLFW", -- Project in PreMake include above
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 
 		defines 
 		{
@@ -83,7 +100,7 @@ project "Sandbox"
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
-		systemversion "10.0"
+		systemversion "latest"
 
 		defines 
 		{

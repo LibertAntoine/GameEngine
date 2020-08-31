@@ -4,6 +4,7 @@
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace GameEngine {
 	class GE_API Log
@@ -29,10 +30,10 @@ namespace GameEngine {
 #define GE_CORE_ERROR(...)       ::GameEngine::Log::GetCoreLogger()->error(__VA_ARGS__)
 #define GE_CORE_FATAL(...)       ::GameEngine::Log::GetCoreLogger()->fatal(__VA_ARGS__)
 
-#define GE_CLIENT_TRACE(...)     ::GameEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
-#define GE_CLIENT_INFO(...)      ::GameEngine::Log::GetClientLogger()->info(__VA_ARGS__)
-#define GE_CLIENT_WARN(...)      ::GameEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
-#define GE_CLIENT_ERROR(...)     ::GameEngine::Log::GetClientLogger()->error(__VA_ARGS__)
-#define GE_CLIENT_FATAL(...)     ::GameEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
+#define GE_TRACE(...)     ::GameEngine::Log::GetClientLogger()->trace(__VA_ARGS__)
+#define GE_INFO(...)      ::GameEngine::Log::GetClientLogger()->info(__VA_ARGS__)
+#define GE_WARN(...)      ::GameEngine::Log::GetClientLogger()->warn(__VA_ARGS__)
+#define GE_ERROR(...)     ::GameEngine::Log::GetClientLogger()->error(__VA_ARGS__)
+#define GE_FATAL(...)     ::GameEngine::Log::GetClientLogger()->fatal(__VA_ARGS__)
 
 
