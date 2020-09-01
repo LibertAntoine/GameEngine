@@ -12,9 +12,13 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
+IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
+IncludeDir["imgui"] = "GameEngine/vendor/imgui/include"
 
--- Include PreMake File of glfw
+-- Include PreMake File of glfw and glad
 include "GameEngine/vendor/glfw"
+include "GameEngine/vendor/glad"
+include "GameEngine/vendor/imgui"
 
 project "GameEngine"
 	location "GameEngine"
@@ -37,11 +41,15 @@ project "GameEngine"
 	{
 		"%{prj.name}/src",
 		"GameEngine/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.imgui}"
 	}
 
 	links 
 	{
+		"Glad",
+		"Imgui",
 		"GLFW", -- Project in PreMake include above
 		"opengl32.lib"
 	}
@@ -54,7 +62,8 @@ project "GameEngine"
 		defines 
 		{
 			"GE_PLATFORM_WINDOWS",
-			"GE_BUILD_DLL"
+			"GE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands 
