@@ -13,7 +13,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
 IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
-IncludeDir["imgui"] = "GameEngine/vendor/imgui/include"
+IncludeDir["imgui"] = "GameEngine/vendor/imgui/"
 
 -- Include PreMake File of glfw and glad
 include "GameEngine/vendor/glfw"

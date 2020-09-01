@@ -7,8 +7,14 @@
     <Filter Include="Game\Events">
       <UniqueIdentifier>{83D08B0A-EF85-0400-787A-FED6E42EFB03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\Imgui">
+      <UniqueIdentifier>{098A8DE1-F541-CF2E-5E49-A88A4A206A1F}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -33,6 +39,9 @@
     <ClInclude Include="src\Game\Events\MouseEvent.h">
       <Filter>Game\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Imgui\ImguiLayer.h">
+      <Filter>Game\Imgui</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Layer.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -46,6 +55,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine.h" />
+    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\WindowsWindow.h">
       <Filter>Platform</Filter>
     </ClInclude>
@@ -55,6 +67,9 @@
     <ClCompile Include="src\Game\Application.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Imgui\ImguiLayer.cpp">
+      <Filter>Game\Imgui</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Layer.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -63,6 +78,9 @@
     </ClCompile>
     <ClCompile Include="src\Game\Log.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\WindowsWindow.cpp">
       <Filter>Platform</Filter>
