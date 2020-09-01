@@ -20,7 +20,7 @@ namespace GameEngine {
 	class GE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(int keycode, int repeatCound)
+		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -42,8 +42,6 @@ namespace GameEngine {
 	public:
 		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
-
-		inline int GetRepeatCount() const { return m_RepeatCount; }
 
 		std::string ToString() const override
 		{
