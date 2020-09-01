@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -109,7 +110,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MT %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/MD /MT %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -136,6 +137,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -157,19 +159,23 @@
     <ClInclude Include="src\Game\Events\Event.h" />
     <ClInclude Include="src\Game\Events\KeyEvent.h" />
     <ClInclude Include="src\Game\Events\MouseEvent.h" />
+    <ClInclude Include="src\Game\Layer.h" />
+    <ClInclude Include="src\Game\LayerStack.h" />
     <ClInclude Include="src\Game\Log.h" />
-    <ClInclude Include="src\GameEngine.h" />
     <ClInclude Include="src\Game\Window.h" />
-    <ClInclude Include="src\gepch.h" />
+    <ClInclude Include="src\GameEngine.h" />
     <ClInclude Include="src\Platform\WindowsWindow.h" />
+    <ClInclude Include="src\gepch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Application.cpp" />
+    <ClCompile Include="src\Game\Layer.cpp" />
+    <ClCompile Include="src\Game\LayerStack.cpp" />
     <ClCompile Include="src\Game\Log.cpp" />
+    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
     <ClCompile Include="src\gepch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\glfw\GLFW.vcxproj">

@@ -7,6 +7,9 @@
     <Filter Include="Game\Events">
       <UniqueIdentifier>{83D08B0A-EF85-0400-787A-FED6E42EFB03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Application.h">
@@ -30,22 +33,40 @@
     <ClInclude Include="src\Game\Events\MouseEvent.h">
       <Filter>Game\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Layer.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\LayerStack.h">
+      <Filter>Game</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Log.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Window.h">
+      <Filter>Game</Filter>
+    </ClInclude>
     <ClInclude Include="src\GameEngine.h" />
+    <ClInclude Include="src\Platform\WindowsWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
     <ClInclude Include="src\gepch.h" />
-    <ClInclude Include="src\Game\Window.h" />
-    <ClInclude Include="src\Platform\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Application.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Layer.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\LayerStack.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Log.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\WindowsWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
     <ClCompile Include="src\gepch.cpp" />
-    <ClCompile Include="src\Platform\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>
