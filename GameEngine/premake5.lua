@@ -1,12 +1,12 @@
 workspace "GameEngine"
 	architecture "x64"
-
 	configurations 
 	{
 		"Debug",
 		"Release",
 		"Dist"
 	}
+	startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -14,13 +14,17 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
 IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
 IncludeDir["imgui"] = "GameEngine/vendor/imgui/"
+IncludeDir["glm"] = "GameEngine/vendor/glm"
 
--- Include PreMake File of glfw and glad
-include "GameEngine/vendor/glfw"
-include "GameEngine/vendor/glad"
-include "GameEngine/vendor/imgui"
 
-startproject "Sandbox"
+-- Include PreMake File of glfw, glad and ImGui
+group "Dependencies"
+	include "GameEngine/vendor/glfw"
+	include "GameEngine/vendor/glad"
+	include "GameEngine/vendor/imgui"
+group ""
+
+
 
 project "GameEngine"
 	location "GameEngine"
@@ -37,7 +41,10 @@ project "GameEngine"
 	files 
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
+
 	}
 
 	includedirs
@@ -46,7 +53,9 @@ project "GameEngine"
 		"GameEngine/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.imgui}"
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
+
 	}
 
 	links 
@@ -71,22 +80,22 @@ project "GameEngine"
 
 		postbuildcommands 
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
 		defines "GE_DEBUG"
-		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "GE_RELEASE"
-		runtime "Released"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "GE_DIST"
-		runtime "Released"
+		runtime "Release"
 		optimize "On"
 
 	filter { "system:windows", "configurations:Release" }
@@ -110,7 +119,8 @@ project "Sandbox"
 	includedirs
 	{
 		"GameEngine/vendor/spdlog/include",
-		"GameEngine/src"
+		"GameEngine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	filter "system:windows"
@@ -130,17 +140,17 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "GE_DEBUG"
-		runtime "Debug"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "GE_RELEASE"
-		runtime "Released"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "GE_DIST"
-		runtime "Released"
+		runtime "Release"
 		optimize "On"
 
 	filter { "system:windows", "configurations:Release" }
