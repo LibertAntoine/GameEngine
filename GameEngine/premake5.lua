@@ -15,6 +15,7 @@ IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
 IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
 IncludeDir["imgui"] = "GameEngine/vendor/imgui/"
 IncludeDir["glm"] = "GameEngine/vendor/glm"
+IncludeDir["stb_image"] = "GameEngine/vendor/stb_image"
 
 
 -- Include PreMake File of glfw, glad and ImGui
@@ -43,6 +44,8 @@ project "GameEngine"
 	{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
 
@@ -60,7 +63,8 @@ project "GameEngine"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imgui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.stb_image}"
 
 	}
 

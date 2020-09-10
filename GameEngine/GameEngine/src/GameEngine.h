@@ -19,6 +19,7 @@
 
 #include "Game/Renderer/Buffer.h"
 #include "Game/Renderer/Shader.h"
+#include "Game/Renderer/Texture.h"
 #include "Game/Renderer/VertexArray.h"
 
 #include "Game/Renderer/OrthographicCamera.h"
