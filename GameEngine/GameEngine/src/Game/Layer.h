@@ -2,7 +2,8 @@
 
 #include "gepch.h"
 
-#include "Game/Core.h"
+#include "Game/Core/Core.h"
+#include "Game/Core/Timestep.h"
 #include "Game/Events/Event.h"
 
 namespace GameEngine {
@@ -15,7 +16,8 @@ namespace GameEngine {
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
+		virtual void OnImGuiRender() {}
 		virtual void OnEvent(Event& event) {}
 
 		inline const std::string& GetName() const { return m_DebugName; }

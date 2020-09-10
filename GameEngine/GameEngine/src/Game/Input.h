@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Game/Core.h"
+#include "Game/COre/Core.h"
 
 namespace GameEngine {
 

@@ -5,7 +5,7 @@
 #include "Game/Events/MouseEvent.h"
 #include "Game/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Platform/OpenGL/OpenGLContext.h"
 
 
 namespace GameEngine {
@@ -35,9 +35,11 @@ namespace GameEngine {
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
-	
+
 		GE_CORE_INFO("Creating window {0} ({1}, {2})", props.Title, props.Width, props.Height);
-	 
+		
+		
+
 		if (!s_GLWFInitialized)
 		{
 			// TODO : glfwTerminate on system shutdown
@@ -49,9 +51,10 @@ namespace GameEngine {
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		GE_CORE_ASSERT(status, "Failed to initialize Glad!");
+		m_Context = new OpenGLContext(m_Window);
+
+		m_Context->Init();
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -157,7 +160,7 @@ namespace GameEngine {
 	void WindowsWindow::OnUpdate()
 	{
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled)

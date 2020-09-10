@@ -2,7 +2,7 @@
 
 /* Manage the logging system of the Game Engine */
 
-#include "Core.h"
+#include "Game/Core/Core.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 
