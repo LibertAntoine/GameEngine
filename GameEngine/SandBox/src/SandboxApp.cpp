@@ -8,7 +8,6 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-
 class ExampleLayer : public GameEngine::Layer
 {
 public:
@@ -100,7 +99,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(GameEngine::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = GameEngine::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -136,51 +135,15 @@ public:
 			}
 		)";
 
-		m_Shader2.reset(GameEngine::Shader::Create(vertexSrc2, fragmentSrc2));
+		m_Shader2 = GameEngine::Shader::Create("FlatColor", vertexSrc2, fragmentSrc2);
 
-
-		std::string TextureVertexSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-			
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
-
-			out vec2 v_TexCoord;
-
-
-			void main()
-			{
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)";
-
-
-		std::string TextureFragmentSrc = R"(
-			#version 330 core
-			
-			layout(location = 0) out vec4 color;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main()
-			{
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader.reset(GameEngine::Shader::Create(TextureVertexSrc, TextureFragmentSrc));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = GameEngine::Texture2D::Create("assets/textures/logo.png");
 		m_Texture2 = GameEngine::Texture2D::Create("assets/textures/rgb.png");
 
-		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<GameEngine::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 
 
@@ -197,10 +160,10 @@ public:
 			m_CameraPosition.x += m_CameraMoveSpeed * ts;
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_UP))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+			m_CameraPosition.y += m_CameraMoveSpeed * ts;
 
 		else if (GameEngine::Input::IsKeyPressed(GE_KEY_DOWN))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
+			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_A))
 			m_CameraRotation += m_CameraRotationSpeed * ts;
@@ -254,13 +217,15 @@ public:
 
 			}
 		}
+		
+		auto textureShader = m_ShaderLibrary.Get("Texture");
 
 		m_Texture->Bind(0);
-		GameEngine::Renderer::Submit(/*mi, */m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		GameEngine::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 		
 		m_Texture2->Bind(0);
-		GameEngine::Renderer::Submit(m_TextureShader, m_SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		GameEngine::Renderer::Submit(textureShader, m_SquareVA, glm::translate(glm::mat4(1.0f), glm::vec3(0.25f, -0.25f, 0.0f)) * glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		
 		// Triangle
 		//GameEngine::Renderer::Submit(/*mi, */m_Shader, m_VertexArray);
@@ -285,10 +250,11 @@ public:
 	}
 
 private:
+	GameEngine::ShaderLibrary m_ShaderLibrary;
 	GameEngine::Ref<GameEngine::Shader> m_Shader;
 	GameEngine::Ref<GameEngine::VertexArray> m_VertexArray;
 
-	GameEngine::Ref<GameEngine::Shader> m_Shader2, m_TextureShader;
+	GameEngine::Ref<GameEngine::Shader> m_Shader2;
 	GameEngine::Ref<GameEngine::VertexArray> m_SquareVA;
 
 	GameEngine::Ref<GameEngine::Texture2D> m_Texture, m_Texture2;
