@@ -10,6 +10,7 @@
 #include "Game/Input.h"
 #include "Game/MouseButtonCodes.h"
 #include "Game/KeyCodes.h"
+#include "Game/OrthographicCameraController.h"
 
 #include "Game/Imgui/ImguiLayer.h"
 

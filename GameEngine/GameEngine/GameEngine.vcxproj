@@ -159,6 +159,7 @@
     <ClInclude Include="src\Game\Renderer\Buffer.h" />
     <ClInclude Include="src\Game\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Game\Renderer\OrthographicCamera.h" />
+    <ClInclude Include="src\Game\OrthographicCameraController.h" />
     <ClInclude Include="src\Game\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Game\Renderer\Renderer.h" />
     <ClInclude Include="src\Game\Renderer\RendererAPI.h" />
@@ -595,6 +596,7 @@
     <ClCompile Include="src\Game\Log.cpp" />
     <ClCompile Include="src\Game\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp" />
+    <ClCompile Include="src\Game\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Game\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Game\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Game\Renderer\RendererAPI.cpp" />

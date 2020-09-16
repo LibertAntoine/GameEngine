@@ -66,6 +66,7 @@ namespace GameEngine {
 			data.Height = height;
 
 			WindowResizeEvent event(width, height);
+
 			data.EventCallback(event);
 
 		});

@@ -12,7 +12,7 @@ class ExampleLayer : public GameEngine::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_SquarePosition(0.0f)
+		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{
 		m_VertexArray.reset(GameEngine::VertexArray::Create());
 
@@ -153,24 +153,7 @@ public:
 	{
 		//Renderer::BeginScene(camera, lights, enviroment);
 
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_LEFT))
-			m_CameraPosition.x -= m_CameraMoveSpeed * ts; // Delta Time
-		
-		else if (GameEngine::Input::IsKeyPressed(GE_KEY_RIGHT))
-			m_CameraPosition.x += m_CameraMoveSpeed * ts;
-
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_UP))
-			m_CameraPosition.y += m_CameraMoveSpeed * ts;
-
-		else if (GameEngine::Input::IsKeyPressed(GE_KEY_DOWN))
-			m_CameraPosition.y -= m_CameraMoveSpeed * ts;
-
-		if (GameEngine::Input::IsKeyPressed(GE_KEY_A))
-			m_CameraRotation += m_CameraRotationSpeed * ts;
-
-		else if (GameEngine::Input::IsKeyPressed(GE_KEY_D))
-			m_CameraRotation -= m_CameraRotationSpeed * ts;
-
+		m_CameraController.OnUpdate(ts);
 
 
 		if (GameEngine::Input::IsKeyPressed(GE_KEY_J))
@@ -191,10 +174,18 @@ public:
 		GameEngine::RenderCommand::SetClearColor({ 1, 0.5, 0.5, 1 });
 		GameEngine::RenderCommand::Clear();
 
-		m_Camera.SetPosition(m_CameraPosition);
-		m_Camera.SetRotation(m_CameraRotation);
 
-		GameEngine::Renderer::BeginScene(m_Camera);
+		GameEngine::Renderer::BeginScene(m_CameraController.GetCamera());
+		//GameEngine::Renderer2D::BeginScene(m_Camera);
+		//GameEngine::Renderer2D::DrawQuad();
+		// Create a batch renderer !! To improve performance in 2D;
+		// Texture slots are limited to 32 slots by raw call.
+		// We can use Texture Atlas for more.
+		// Add Animation Sytem.
+		// Improve our layout system.
+		// Add Post Effects
+		// Add Scripting System (BluePrints, LUA), ECS/CGO -> Decompose from component our game.
+
 
 		glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -244,9 +235,9 @@ public:
 	}
 
 
-	void OnEvent(GameEngine::Event & event) override
+	void OnEvent(GameEngine::Event & e) override
 	{
-
+		m_CameraController.OnEvent(e);
 	}
 
 private:
@@ -259,12 +250,7 @@ private:
 
 	GameEngine::Ref<GameEngine::Texture2D> m_Texture, m_Texture2;
 
-	GameEngine::OrthographicCamera m_Camera;
-	glm::vec3 m_CameraPosition;
-	float m_CameraMoveSpeed = 1.0f;
-	float m_CameraRotation = 0.0f;
-	float m_CameraRotationSpeed = 20.0f;
-
+	GameEngine::OrthographicCameraController m_CameraController;
 	glm::vec3 m_SquarePosition;
 	float m_SquareMoveSpeed = 1.0f;
 

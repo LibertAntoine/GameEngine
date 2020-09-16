@@ -105,9 +105,6 @@
     <ClInclude Include="src\Game\Renderer\GraphicsContext.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Renderer\OrthographicCamera.h">
-      <Filter>src\Game\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Renderer\RenderCommand.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
@@ -1386,6 +1383,10 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Renderer\OrthographicCamera.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Application.cpp">
@@ -1407,9 +1408,6 @@
       <Filter>src\Game</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\Buffer.cpp">
-      <Filter>src\Game\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\RenderCommand.cpp">
@@ -1460,5 +1458,9 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>
