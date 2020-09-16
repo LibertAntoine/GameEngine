@@ -1,16 +1,16 @@
 #pragma once
 
 // For use by GameEngine Applications
-#include "Game/Application.h"
-#include "Game/Layer.h"
-#include "Game/Log.h"
+#include "Game/Core/Application.h"
+#include "Game/Core/Layer.h"
+#include "Game/Core/Log.h"
 
 #include "Game/Core/Timestep.h"
 
-#include "Game/Input.h"
-#include "Game/MouseButtonCodes.h"
-#include "Game/KeyCodes.h"
-#include "Game/OrthographicCameraController.h"
+#include "Game/Core/Input.h"
+#include "Game/Core/MouseButtonCodes.h"
+#include "Game/Core/KeyCodes.h"
+#include "Game/Renderer/OrthographicCameraController.h"
 
 #include "Game/Imgui/ImguiLayer.h"
 
@@ -27,5 +27,5 @@
 // ----------------------------------
 
 // --- Entry Point ------------------
-#include "Game/EntryPoint.h"
+#include "Game/Core/EntryPoint.h"
 // ----------------------------------

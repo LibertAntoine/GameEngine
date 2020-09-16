@@ -1,8 +1,8 @@
 #include "gepch.h"
 #include "OrthographicCameraController.h"
 
-#include "Game/Input.h"
-#include "Game/KeyCodes.h"
+#include "Game/Core/Input.h"
+#include "Game/Core/KeyCodes.h"
 
 namespace GameEngine {
 

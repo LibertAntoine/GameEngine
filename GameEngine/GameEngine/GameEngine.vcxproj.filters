@@ -54,17 +54,38 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Game\Application.h">
-      <Filter>src\Game</Filter>
+    <ClInclude Include="src\Game\Core\Application.h">
+      <Filter>src\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Core\Core.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\EntryPoint.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\Input.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\KeyCodes.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\Layer.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\LayerStack.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\Log.h">
+      <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Core\MouseButtonCodes.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Core\Timestep.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\EntryPoint.h">
-      <Filter>src\Game</Filter>
+    <ClInclude Include="src\Game\Core\Window.h">
+      <Filter>src\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Events\ApplicationEvent.h">
       <Filter>src\Game\Events</Filter>
@@ -81,28 +102,16 @@
     <ClInclude Include="src\Game\Imgui\ImguiLayer.h">
       <Filter>src\Game\Imgui</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Input.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\KeyCodes.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Layer.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\LayerStack.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Log.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\MouseButtonCodes.h">
-      <Filter>src\Game</Filter>
-    </ClInclude>
     <ClInclude Include="src\Game\Renderer\Buffer.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\GraphicsContext.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Renderer\OrthographicCamera.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Renderer\OrthographicCameraController.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\RenderCommand.h">
@@ -122,9 +131,6 @@
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\VertexArray.h">
       <Filter>src\Game\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\Window.h">
-      <Filter>src\Game</Filter>
     </ClInclude>
     <ClInclude Include="src\GameEngine.h">
       <Filter>src</Filter>
@@ -1383,14 +1389,19 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Renderer\OrthographicCamera.h">
-      <Filter>src\Game\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Game\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Game\Application.cpp">
-      <Filter>src\Game</Filter>
+    <ClCompile Include="src\Game\Core\Application.cpp">
+      <Filter>src\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Core\Layer.cpp">
+      <Filter>src\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Core\LayerStack.cpp">
+      <Filter>src\Game\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Core\Log.cpp">
+      <Filter>src\Game\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Imgui\ImGuiBuild.cpp">
       <Filter>src\Game\Imgui</Filter>
@@ -1398,16 +1409,13 @@
     <ClCompile Include="src\Game\Imgui\ImguiLayer.cpp">
       <Filter>src\Game\Imgui</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Layer.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\LayerStack.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\Log.cpp">
-      <Filter>src\Game</Filter>
-    </ClCompile>
     <ClCompile Include="src\Game\Renderer\Buffer.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\RenderCommand.cpp">
@@ -1458,9 +1466,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp">
-      <Filter>src\Game\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Game\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

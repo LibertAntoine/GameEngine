@@ -1,6 +1,6 @@
 #include "gepch.h"
 #include "WindowsInput.h"
-#include "Game/Application.h"
+#include "Game/Core/Application.h"
 
 #include <GLFW/glfw3.h>
 
