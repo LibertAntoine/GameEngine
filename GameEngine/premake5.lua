@@ -81,7 +81,6 @@ project "GameEngine"
 
 		defines 
 		{
-			"GE_PLATFORM_WINDOWS",
 			"GE_BUILD_DLL",
 			"GLFW_INCLUDE_NONE"
 		}
@@ -131,11 +130,6 @@ project "Sandbox"
 	filter "system:windows"
 		staticruntime "On"
 		systemversion "latest"
-
-		defines 
-		{
-			"GE_PLATFORM_WINDOWS"
-		}
 
 	links
 	{

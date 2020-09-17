@@ -16,6 +16,7 @@
 
 // --- Renderer ---------------------
 #include "Game/Renderer/Renderer.h"
+#include "Game/Renderer/Renderer2D.h"
 #include "Game/Renderer/RenderCommand.h"
 
 #include "Game/Renderer/Buffer.h"
@@ -26,6 +27,3 @@
 #include "Game/Renderer/OrthographicCamera.h"
 // ----------------------------------
 
-// --- Entry Point ------------------
-#include "Game/Core/EntryPoint.h"
-// ----------------------------------

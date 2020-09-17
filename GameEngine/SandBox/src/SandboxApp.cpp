@@ -1,11 +1,17 @@
 #include <GameEngine.h>
 
+// --- Entry Point ------------------
+#include <Game/Core/EntryPoint.h>
+// ----------------------------------
+
 #include "Platform/OpenGL/OpenGLShader.h"
 
 #include "imgui/Imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+
+#include "Sandbox2D.h"
 
 
 class ExampleLayer : public GameEngine::Layer
@@ -14,7 +20,7 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f / 720.0f, true)
 	{
-		m_VertexArray.reset(GameEngine::VertexArray::Create());
+		m_VertexArray = GameEngine::VertexArray::Create();
 
 		float vertices[3 * 7] =
 		{
@@ -39,7 +45,7 @@ public:
 		indexBuffer.reset(GameEngine::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
-		m_SquareVA.reset(GameEngine::VertexArray::Create());
+		m_SquareVA = GameEngine::VertexArray::Create();
 
 		float squareVertices[5 * 4] =
 		{
@@ -262,7 +268,8 @@ class Sandbox : public GameEngine::Application { // Define class child of the li
 public:
 	Sandbox()
 	{
-		PushLayer(new ExampleLayer());
+		// PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
 	}
 
 	~Sandbox()
