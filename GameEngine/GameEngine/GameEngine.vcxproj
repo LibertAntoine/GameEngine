@@ -152,6 +152,7 @@
     <ClInclude Include="src\Game\Core\MouseButtonCodes.h" />
     <ClInclude Include="src\Game\Core\Timestep.h" />
     <ClInclude Include="src\Game\Core\Window.h" />
+    <ClInclude Include="src\Game\Debug\Instrumentor.h" />
     <ClInclude Include="src\Game\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Game\Events\Event.h" />
     <ClInclude Include="src\Game\Events\KeyEvent.h" />

@@ -1390,6 +1390,7 @@
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Game\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Core\Application.cpp">

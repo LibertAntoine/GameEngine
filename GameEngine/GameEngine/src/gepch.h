@@ -14,6 +14,7 @@
 #include <unordered_set>
 
 #include "Game/Core/Log.h"
+#include "Game/Debug/Instrumentor.h"
 
 #ifdef GE_PLATFORM_WINDOWS
 	#include <Windows.h>
