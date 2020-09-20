@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameEngine.h"
-
+#include "ParticuleSystem.h"
 
 class Sandbox2D : public GameEngine::Layer
 {
@@ -22,6 +22,7 @@ private:
 	GameEngine::Ref<GameEngine::Shader> m_Shader;
 	
 	GameEngine::Ref<GameEngine::Texture2D> m_CheckerboardTexture;
+	GameEngine::Ref<GameEngine::Texture2D> m_SpriteSheet;
 
 	struct ProfileResult
 	{
@@ -33,4 +34,8 @@ private:
 
 
 	glm::vec4 m_SquareColor = { 0.2f, 0.3f, 0.8f, 1.0f };
+
+	ParticleSystem m_ParticleSystem;
+	ParticleProps m_Particle;
+
 };
