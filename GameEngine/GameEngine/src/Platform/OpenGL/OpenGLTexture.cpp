@@ -95,6 +95,4 @@ namespace GameEngine {
 
 		glBindTextureUnit(slot, m_RendererID);
 	}
-
-
 }
