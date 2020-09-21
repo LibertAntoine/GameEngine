@@ -1,7 +1,7 @@
 #include "gepch.h"
-#include "Buffer.h"
+#include "Game/Renderer/Buffer.h"
 
-#include "Renderer.h"
+#include "Game/Renderer/Renderer.h"
 #include "Platform/OpenGL/OpenGLBuffer.h"
 
 namespace GameEngine {

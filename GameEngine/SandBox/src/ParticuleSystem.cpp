@@ -32,7 +32,7 @@ std::uniform_int_distribution<std::mt19937::result_type> Random::s_Distribution;
 ParticleSystem::ParticleSystem(uint32_t maxParticules)
 	: m_PoolIndex(maxParticules - 1)
 {
-	m_ParticlePool.resize(m_PoolIndex);
+	m_ParticlePool.resize(maxParticules);
 }
 
 void ParticleSystem::OnUpdate(GameEngine::Timestep ts)

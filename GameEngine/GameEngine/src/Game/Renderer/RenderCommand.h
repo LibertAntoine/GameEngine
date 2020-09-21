@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "Game/Renderer/RendererAPI.h"
 
 namespace GameEngine {
 
@@ -35,7 +35,7 @@ namespace GameEngine {
 			s_RendererAPI->DrawIndexed(vertexArray, count);
 		}
 	private:
-		static RendererAPI* s_RendererAPI;
+		static Scope<RendererAPI> s_RendererAPI;
 	};
 
 }

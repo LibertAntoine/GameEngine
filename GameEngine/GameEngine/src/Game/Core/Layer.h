@@ -2,17 +2,17 @@
 
 #include "gepch.h"
 
-#include "Game/Core/Core.h"
+#include "Game/Core/Base.h"
 #include "Game/Core/Timestep.h"
 #include "Game/Events/Event.h"
 
 namespace GameEngine {
 
-	class GE_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string& name = "Layer");
-		virtual ~Layer();
+		virtual ~Layer() = default;
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}

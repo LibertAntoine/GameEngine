@@ -142,14 +142,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Core\Application.h" />
-    <ClInclude Include="src\Game\Core\Core.h" />
+    <ClInclude Include="src\Game\Core\Base.h" />
     <ClInclude Include="src\Game\Core\EntryPoint.h" />
     <ClInclude Include="src\Game\Core\Input.h" />
     <ClInclude Include="src\Game\Core\KeyCodes.h" />
     <ClInclude Include="src\Game\Core\Layer.h" />
     <ClInclude Include="src\Game\Core\LayerStack.h" />
     <ClInclude Include="src\Game\Core\Log.h" />
-    <ClInclude Include="src\Game\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Game\Core\MouseCodes.h" />
     <ClInclude Include="src\Game\Core\Timestep.h" />
     <ClInclude Include="src\Game\Core\Window.h" />
     <ClInclude Include="src\Game\Debug\Instrumentor.h" />
@@ -167,6 +167,7 @@
     <ClInclude Include="src\Game\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Game\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Game\Renderer\Shader.h" />
+    <ClInclude Include="src\Game\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Game\Renderer\Texture.h" />
     <ClInclude Include="src\Game\Renderer\VertexArray.h" />
     <ClInclude Include="src\GameEngine.h" />
@@ -591,12 +592,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Core\Application.cpp" />
+    <ClCompile Include="src\Game\Core\Input.cpp" />
     <ClCompile Include="src\Game\Core\Layer.cpp" />
     <ClCompile Include="src\Game\Core\LayerStack.cpp" />
     <ClCompile Include="src\Game\Core\Log.cpp" />
+    <ClCompile Include="src\Game\Core\Window.cpp" />
     <ClCompile Include="src\Game\Imgui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Game\Imgui\ImguiLayer.cpp" />
     <ClCompile Include="src\Game\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Game\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Game\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Game\Renderer\RenderCommand.cpp" />
@@ -604,6 +608,7 @@
     <ClCompile Include="src\Game\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Game\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Game\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Game\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Game\Renderer\Texture.cpp" />
     <ClCompile Include="src\Game\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />

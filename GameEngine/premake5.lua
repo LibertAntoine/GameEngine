@@ -1,5 +1,5 @@
 workspace "GameEngine"
-	architecture "x64"
+	architecture "x86_64"
 	configurations 
 	{
 		"Debug",
@@ -53,7 +53,8 @@ project "GameEngine"
 
 	defines 
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
@@ -81,8 +82,6 @@ project "GameEngine"
 
 		defines 
 		{
-			"GE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"

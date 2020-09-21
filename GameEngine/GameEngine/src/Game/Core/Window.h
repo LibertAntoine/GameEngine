@@ -2,7 +2,7 @@
 
 #include "gepch.h"
 
-#include "Game/Core/Core.h"
+#include "Game/Core/Base.h"
 #include "Game/Events/Event.h"
 
 namespace GameEngine {
@@ -20,7 +20,7 @@ namespace GameEngine {
 	};
 
 	// Interface representing a desktop system based Window
-	class GE_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
@@ -39,6 +39,6 @@ namespace GameEngine {
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 	};
 }

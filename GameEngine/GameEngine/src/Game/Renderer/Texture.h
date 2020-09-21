@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "Game/Core/Core.h"
+#include "Game/Core/Base.h"
 
 
 
