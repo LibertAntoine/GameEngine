@@ -4,6 +4,7 @@
 
 namespace GameEngine {
 
+
 	class OrthographicCamera
 	{
 	public:
