@@ -36,7 +36,7 @@ namespace GameEngine {
 	{
 		std::string Name;
 		ShaderDataType Type;
-		uint32_t Offset;
+		size_t Offset;
 		uint32_t Size;
 		bool Normalized;
 
@@ -54,8 +54,8 @@ namespace GameEngine {
 				case ShaderDataType::Float2: return 2;
 				case ShaderDataType::Float3: return 3;
 				case ShaderDataType::Float4: return 4;
-				case ShaderDataType::Mat3:   return 3 * 3;
-				case ShaderDataType::Mat4:   return 4 * 4;
+				case ShaderDataType::Mat3:   return 3; // 3* float3
+				case ShaderDataType::Mat4:   return 4; // 4* float4
 				case ShaderDataType::Int:    return 1;
 				case ShaderDataType::Int2:   return 2;
 				case ShaderDataType::Int3:   return 3;
@@ -90,7 +90,7 @@ namespace GameEngine {
 	private:
 		void CalculateOffsetAndStride()
 		{
-			uint32_t offset = 0;
+			size_t offset = 0;
 			m_Stride = 0;
 			for (auto& element : m_Elements)
 			{
