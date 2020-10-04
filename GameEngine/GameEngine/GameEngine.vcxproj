@@ -76,8 +76,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;GE_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\enTT\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -96,8 +96,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;GE_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\enTT\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -121,8 +121,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>gepch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GE_PLATFORM_WINDOWS;GE_BUILD_DLL;GLFW_INCLUDE_NONE;GE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;GE_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\glfw\include;vendor\glad\include;vendor\imgui;vendor\glm;vendor\stb_image;vendor\enTT\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -142,14 +142,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\Game\Core\Application.h" />
-    <ClInclude Include="src\Game\Core\Core.h" />
+    <ClInclude Include="src\Game\Core\Base.h" />
     <ClInclude Include="src\Game\Core\EntryPoint.h" />
     <ClInclude Include="src\Game\Core\Input.h" />
     <ClInclude Include="src\Game\Core\KeyCodes.h" />
     <ClInclude Include="src\Game\Core\Layer.h" />
     <ClInclude Include="src\Game\Core\LayerStack.h" />
     <ClInclude Include="src\Game\Core\Log.h" />
-    <ClInclude Include="src\Game\Core\MouseButtonCodes.h" />
+    <ClInclude Include="src\Game\Core\MouseCodes.h" />
     <ClInclude Include="src\Game\Core\Timestep.h" />
     <ClInclude Include="src\Game\Core\Window.h" />
     <ClInclude Include="src\Game\Debug\Instrumentor.h" />
@@ -159,6 +159,7 @@
     <ClInclude Include="src\Game\Events\MouseEvent.h" />
     <ClInclude Include="src\Game\Imgui\ImguiLayer.h" />
     <ClInclude Include="src\Game\Renderer\Buffer.h" />
+    <ClInclude Include="src\Game\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Game\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Game\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Game\Renderer\OrthographicCameraController.h" />
@@ -167,16 +168,23 @@
     <ClInclude Include="src\Game\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Game\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Game\Renderer\Shader.h" />
+    <ClInclude Include="src\Game\Renderer\SubTexture2D.h" />
     <ClInclude Include="src\Game\Renderer\Texture.h" />
     <ClInclude Include="src\Game\Renderer\VertexArray.h" />
     <ClInclude Include="src\GameEngine.h" />
+    <ClInclude Include="src\Game\Renderer\Camera.h" />
+    <ClInclude Include="src\Game\Scene\Component.h" />
+    <ClInclude Include="src\Game\Scene\Entity.h" />
+    <ClInclude Include="src\Game\Scene\Scene.h" />
+    <ClInclude Include="src\Game\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Game\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Window\WindowsInput.h" />
     <ClInclude Include="src\Platform\Window\WindowsWindow.h" />
     <ClInclude Include="src\gepch.h" />
     <ClInclude Include="vendor\glm\glm\common.hpp" />
@@ -594,9 +602,12 @@
     <ClCompile Include="src\Game\Core\Layer.cpp" />
     <ClCompile Include="src\Game\Core\LayerStack.cpp" />
     <ClCompile Include="src\Game\Core\Log.cpp" />
+    <ClCompile Include="src\Game\Core\Window.cpp" />
     <ClCompile Include="src\Game\Imgui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Game\Imgui\ImguiLayer.cpp" />
     <ClCompile Include="src\Game\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Game\Renderer\FrameBuffer.cpp" />
+    <ClCompile Include="src\Game\Renderer\GraphicsContext.cpp" />
     <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Game\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Game\Renderer\RenderCommand.cpp" />
@@ -604,10 +615,15 @@
     <ClCompile Include="src\Game\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Game\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Game\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Game\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Game\Renderer\Texture.cpp" />
     <ClCompile Include="src\Game\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Game\Scene\Entity.cpp" />
+    <ClCompile Include="src\Game\Scene\Scene.cpp" />
+    <ClCompile Include="src\Game\Scene\SceneCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />

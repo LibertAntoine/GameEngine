@@ -10,6 +10,9 @@
     <Filter Include="src\Game\Core">
       <UniqueIdentifier>{0EF7E9BA-7AB7-65F1-43F2-AE6EAF71AACD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Game\Debug">
+      <UniqueIdentifier>{EC333518-D801-291E-C195-9944AD020583}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Game\Events">
       <UniqueIdentifier>{1A046622-868F-D3E6-8FA0-56DBFBAA2FE7}</UniqueIdentifier>
     </Filter>
@@ -57,7 +60,7 @@
     <ClInclude Include="src\Game\Core\Application.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Core\Core.h">
+    <ClInclude Include="src\Game\Core\Base.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Core\EntryPoint.h">
@@ -78,7 +81,7 @@
     <ClInclude Include="src\Game\Core\Log.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Core\MouseButtonCodes.h">
+    <ClInclude Include="src\Game\Core\MouseCodes.h">
       <Filter>src\Game\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Core\Timestep.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="src\Game\Core\Window.h">
       <Filter>src\Game\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Debug\Instrumentor.h">
+      <Filter>src\Game\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Events\ApplicationEvent.h">
       <Filter>src\Game\Events</Filter>
@@ -105,6 +111,9 @@
     <ClInclude Include="src\Game\Renderer\Buffer.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Renderer\FrameBuffer.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Renderer\GraphicsContext.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
@@ -120,10 +129,16 @@
     <ClInclude Include="src\Game\Renderer\Renderer.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Game\Renderer\Renderer2D.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Game\Renderer\RendererAPI.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\Shader.h">
+      <Filter>src\Game\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Game\Renderer\SubTexture2D.h">
       <Filter>src\Game\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Game\Renderer\Texture.h">
@@ -141,6 +156,9 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFrameBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -152,9 +170,6 @@
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\Window\WindowsInput.h">
-      <Filter>src\Platform\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Window\WindowsWindow.h">
       <Filter>src\Platform\Window</Filter>
@@ -1389,8 +1404,12 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Game\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Game\Debug\Instrumentor.h" />
+    <ClInclude Include="src\Game\Scene\Scene.h" />
+    <ClInclude Include="src\Game\Scene\Component.h" />
+    <ClInclude Include="src\Game\Scene\Entity.h" />
+    <ClInclude Include="src\Game\Renderer\Camera.h" />
+    <ClInclude Include="src\Game\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Game\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Game\Core\Application.cpp">
@@ -1405,6 +1424,9 @@
     <ClCompile Include="src\Game\Core\Log.cpp">
       <Filter>src\Game\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Core\Window.cpp">
+      <Filter>src\Game\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Imgui\ImGuiBuild.cpp">
       <Filter>src\Game\Imgui</Filter>
     </ClCompile>
@@ -1412,6 +1434,12 @@
       <Filter>src\Game\Imgui</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\Buffer.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Renderer\FrameBuffer.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Renderer\GraphicsContext.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\OrthographicCamera.cpp">
@@ -1426,10 +1454,16 @@
     <ClCompile Include="src\Game\Renderer\Renderer.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Game\Renderer\Renderer2D.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Game\Renderer\RendererAPI.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\Shader.cpp">
+      <Filter>src\Game\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Game\Renderer\SubTexture2D.cpp">
       <Filter>src\Game\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Game\Renderer\Texture.cpp">
@@ -1442,6 +1476,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFrameBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -1468,6 +1505,8 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\Game\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Game\Scene\Scene.cpp" />
+    <ClCompile Include="src\Game\Scene\Entity.cpp" />
+    <ClCompile Include="src\Game\Scene\SceneCamera.cpp" />
   </ItemGroup>
 </Project>

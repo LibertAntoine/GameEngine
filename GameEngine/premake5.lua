@@ -1,12 +1,12 @@
 workspace "GameEngine"
-	architecture "x64"
+	architecture "x86_64"
 	configurations 
 	{
 		"Debug",
 		"Release",
 		"Dist"
 	}
-	startproject "Sandbox"
+	startproject "GameEditor"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -16,6 +16,7 @@ IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
 IncludeDir["imgui"] = "GameEngine/vendor/imgui/"
 IncludeDir["glm"] = "GameEngine/vendor/glm"
 IncludeDir["stb_image"] = "GameEngine/vendor/stb_image"
+IncludeDir["entt"] = "GameEngine/vendor/enTT/include"
 
 
 -- Include PreMake File of glfw, glad and ImGui
@@ -24,8 +25,6 @@ group "Dependencies"
 	include "GameEngine/vendor/glad"
 	include "GameEngine/vendor/imgui"
 group ""
-
-
 
 project "GameEngine"
 	location "GameEngine"
@@ -53,7 +52,8 @@ project "GameEngine"
 
 	defines 
 	{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs
@@ -64,7 +64,8 @@ project "GameEngine"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.imgui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.stb_image}"
+		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}"
 
 	}
 
@@ -81,8 +82,6 @@ project "GameEngine"
 
 		defines 
 		{
-			"GE_BUILD_DLL",
-			"GLFW_INCLUDE_NONE"
 		}
 
 	filter "configurations:Debug"
@@ -124,7 +123,58 @@ project "Sandbox"
 		"GameEngine/vendor/spdlog/include",
 		"GameEngine/src",
 		"GameEngine/vendor",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
+	}
+
+	filter "system:windows"
+		staticruntime "On"
+		systemversion "latest"
+
+	links
+	{
+		"GameEngine"
+	}
+
+	filter "configurations:Debug"
+		defines "GE_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter "configurations:Release"
+		defines "GE_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter "configurations:Dist"
+		defines "GE_DIST"
+		runtime "Release"
+		optimize "on"
+
+
+project "GameEditor"
+	location "GameEditor"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	files 
+	{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs
+	{
+		"GameEngine/vendor/spdlog/include",
+		"GameEngine/src",
+		"GameEngine/vendor",
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}"
 	}
 
 	filter "system:windows"

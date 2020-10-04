@@ -1,11 +1,11 @@
 #include "gepch.h"
-#include "Application.h"
+#include "Game/Core/Application.h"
 
-#include "Input.h"
+#include "Game/Core/Input.h"
 
 #include "Game/Renderer/Renderer.h"
 
-#include "GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
 namespace GameEngine {
 
@@ -13,7 +13,7 @@ namespace GameEngine {
 
 	Application* Application::s_Instance = nullptr;
 
-	Application::Application()
+	Application::Application(const std::string& name)
 		
 	{
 		GE_PROFILE_FUNCTION();
@@ -21,9 +21,9 @@ namespace GameEngine {
 		GE_CORE_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
-		m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-	
+		m_Window = Window::Create(WindowProps(name));
+		m_Window->SetEventCallback(GE_BIND_EVENT_FN(Application::OnEvent));
+		
 		Renderer::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
@@ -35,7 +35,7 @@ namespace GameEngine {
 	{
 		GE_PROFILE_FUNCTION();
 
-		// Renderer::Shutdown();
+		Renderer::Shutdown();
 	}
 
 	void Application::Run()
@@ -88,21 +88,25 @@ namespace GameEngine {
 		layer->OnAttach();
 	}
 
+	void Application::Close()
+	{
+		m_Running = false;
+	}
+
 
 	void Application::OnEvent(Event& e)
 	{
 		GE_PROFILE_FUNCTION();
 
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
+		dispatcher.Dispatch<WindowCloseEvent>(GE_BIND_EVENT_FN(Application::OnWindowClose));
+		dispatcher.Dispatch<WindowResizeEvent>(GE_BIND_EVENT_FN(Application::OnWindowResize));
 
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
-		{
-			(*--it)->OnEvent(e);
-			if (e.Handled())
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it) {
+			if (e.Handled)
 				break;
+			(*it)->OnEvent(e);
 		}
 	}
 
