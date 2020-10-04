@@ -3,7 +3,6 @@
 #include "Game/Core/Window.h"
 #include "Game/Renderer/GraphicsContext.h"
 
-
 #include <GLFW/glfw3.h>
 
 
@@ -32,7 +31,7 @@ namespace GameEngine {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
-		Ref<GraphicsContext> m_Context;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;

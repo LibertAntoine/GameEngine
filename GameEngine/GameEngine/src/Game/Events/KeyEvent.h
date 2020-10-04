@@ -1,27 +1,26 @@
 #pragma once
 
-#include "Game/Events/Event.h"
-#include "Game/Core/Input.h"
+#include "Event.h"
 
 namespace GameEngine {
 
-	class KeyEvent : public Event
+	class GE_API KeyEvent : public Event
 	{
 	public:
-		inline KeyCode GetKeyCode() const { return m_KeyCode; }
+		inline int GetKeyCode() const { return m_KeyCode;  }
 
 		EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 	protected:
-		KeyEvent(KeyCode keycode)
+		KeyEvent(int keycode)
 			: m_KeyCode(keycode) {}
 
-		KeyCode m_KeyCode;
+		int m_KeyCode;
 	};
 
-	class KeyPressedEvent : public KeyEvent
+	class GE_API KeyPressedEvent : public KeyEvent
 	{
 	public:
-		KeyPressedEvent(KeyCode keycode, int repeatCount)
+		KeyPressedEvent(int keycode, int repeatCount)
 			: KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 
 		inline int GetRepeatCount() const { return m_RepeatCount; }
@@ -38,10 +37,10 @@ namespace GameEngine {
 		int m_RepeatCount;
 	};
 
-	class KeyReleasedEvent : public KeyEvent
+	class GE_API KeyReleasedEvent : public KeyEvent
 	{
 	public:
-		KeyReleasedEvent(KeyCode keycode)
+		KeyReleasedEvent(int keycode)
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override
@@ -54,10 +53,10 @@ namespace GameEngine {
 		EVENT_CLASS_TYPE(KeyPressed)
 	};
 
-	class KeyTypedEvent : public KeyEvent
+	class GE_API KeyTypedEvent : public KeyEvent
 	{
 	public:
-		KeyTypedEvent(KeyCode keycode)
+		KeyTypedEvent(int keycode)
 			: KeyEvent(keycode) {}
 
 		std::string ToString() const override

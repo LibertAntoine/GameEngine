@@ -1,7 +1,8 @@
 #include "gepch.h"
-#include "Platform/OpenGL/OpenGLTexture.h"
+#include "OpenGLTexture.h"
 
-#include <stb_image.h>
+#include "stb_image.h"
+
 #include <glad/glad.h>
 
 namespace GameEngine {

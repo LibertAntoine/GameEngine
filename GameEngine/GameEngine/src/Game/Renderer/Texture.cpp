@@ -1,7 +1,7 @@
 #include "gepch.h"
-#include "Game/Renderer/Texture.h"
+#include "Texture.h"
 
-#include "Game/Renderer/Renderer.h"
+#include "Renderer.h"
 #include "Platform/OpenGL/OpenGLTexture.h"
 
 

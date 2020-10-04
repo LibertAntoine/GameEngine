@@ -8,7 +8,7 @@
 
 namespace GameEngine {
 
-	class ImGuiLayer : public Layer
+	class GE_API ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
@@ -17,7 +17,6 @@ namespace GameEngine {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImGuiRender() override;
-		virtual void OnEvent(Event& e) override;
 
 		void Begin();
 		void End();

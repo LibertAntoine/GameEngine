@@ -1,8 +1,5 @@
 #include "gepch.h"
-#include "Platform/Window/WindowsWindow.h"
-
-#include "Game/Core/Input.h"
-#include "Game/Renderer/Renderer.h"
+#include "WindowsWindow.h"
 
 #include "Game/Events/ApplicationEvent.h"
 #include "Game/Events/MouseEvent.h"
@@ -12,11 +9,16 @@
 
 
 namespace GameEngine {
-	static uint8_t s_GLFWWindowCount = 0;
+	static bool s_GLWFInitialized = false;
 
 	static void GLFWErrorCallback(int error, const char* description)
 	{
 		GE_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+	}
+
+	Window* Window::Create(const WindowProps& props)
+	{
+		return new WindowsWindow(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
@@ -45,24 +47,18 @@ namespace GameEngine {
 		
 		
 
-		if (s_GLFWWindowCount == 0)
+		if (!s_GLWFInitialized)
 		{
-			GE_CORE_INFO("Initializing GLFW");
+			// TODO : glfwTerminate on system shutdown
 			int success = glfwInit();
 			GE_CORE_ASSERT(success, "Could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
 
-			s_GLFWWindowCount = true;
+			s_GLWFInitialized = true;
 		}
 
-		#if defined(GE_DEBUG)
-				if (Renderer::GetAPI() == RendererAPI::API::OpenGL)
-					glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GLFW_TRUE);
-		#endif
-
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
-		++s_GLFWWindowCount;
-		m_Context = GraphicsContext::Create(m_Window);
+		m_Context = new OpenGLContext(m_Window);
 
 		m_Context->Init();
 
@@ -97,19 +93,19 @@ namespace GameEngine {
 				{
 					case GLFW_PRESS:
 					{
-						KeyPressedEvent event(static_cast<KeyCode>(key), 0);
+						KeyPressedEvent event(key, 0);
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_RELEASE:
 					{
-						KeyReleasedEvent event(static_cast<KeyCode>(key));
+						KeyReleasedEvent event(key);
 						data.EventCallback(event);
 						break;
 					}
 					case GLFW_REPEAT:
 					{
-						KeyPressedEvent event(static_cast<KeyCode>(key), 1);
+						KeyPressedEvent event(key, 1);
 						data.EventCallback(event);
 						break;
 					}
@@ -120,7 +116,7 @@ namespace GameEngine {
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 			
-			KeyTypedEvent event(static_cast<KeyCode>(keycode));
+			KeyTypedEvent event(keycode);
 			data.EventCallback(event);
 		});
 
@@ -132,13 +128,13 @@ namespace GameEngine {
 			{
 				case GLFW_PRESS:
 				{	
-					MouseButtonPressedEvent event(static_cast<MouseCode>(button));
+					MouseButtonPressedEvent event(button);
 					data.EventCallback(event);
 					break;
 				}
 				case GLFW_RELEASE:
 				{
-					MouseButtonReleasedEvent event(static_cast<MouseCode>(button));
+					MouseButtonReleasedEvent event(button);
 					data.EventCallback(event);
 					break;
 				}
@@ -169,14 +165,6 @@ namespace GameEngine {
 		GE_PROFILE_FUNCTION();
 
 		glfwDestroyWindow(m_Window);
-
-		--s_GLFWWindowCount;
-
-		if (s_GLFWWindowCount == 0)
-		{
-			GE_CORE_INFO("Terminating GLFW");
-			glfwTerminate();
-		}
 	}
 
 	void WindowsWindow::OnUpdate()

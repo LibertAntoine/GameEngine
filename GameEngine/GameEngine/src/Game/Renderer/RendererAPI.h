@@ -2,7 +2,7 @@
 
 #include <glm/glm.hpp>
 
-#include "Game/Renderer/VertexArray.h"
+#include "VertexArray.h"
 
 namespace GameEngine {
 
@@ -23,7 +23,6 @@ namespace GameEngine {
 		virtual void DrawIndexed(const Ref<VertexArray>& vertexArray, uint32_t indexCount = 0) = 0;
 	
 		inline static API GetAPI() { return s_API;  }
-		static Scope<RendererAPI> Create();
 	private:
 		static API s_API;
 	};

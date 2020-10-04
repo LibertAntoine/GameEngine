@@ -1,6 +1,8 @@
 #include "gepch.h"
-#include "Game/Renderer/RenderCommand.h"
+#include "RenderCommand.h"
+
+#include "Platform/OpenGL/OpenGLRendererAPI.h"
 
 namespace GameEngine {
-	Scope<RendererAPI> RenderCommand::s_RendererAPI = RendererAPI::Create();
+	RendererAPI * RenderCommand::s_RendererAPI = new OpenGLRendererAPI;
 }

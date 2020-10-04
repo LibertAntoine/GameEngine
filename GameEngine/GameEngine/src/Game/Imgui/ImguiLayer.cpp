@@ -1,11 +1,11 @@
 #include "gepch.h"
-#include "Game/ImGui/ImguiLayer.h"
+#include "ImguiLayer.h"
 
-#include <imgui.h>
+#include "imgui.h"
 
 #define INPUT_IMPL_API
-#include <examples/imgui_impl_glfw.h>
-#include <examples/imgui_impl_opengl3.h>
+#include "examples/imgui_impl_glfw.h"
+#include "examples/imgui_impl_opengl3.h"
 
 
 #include "Game/Core/Application.h"
@@ -99,13 +99,6 @@ namespace GameEngine {
 	{
 		static bool show = true;
 		ImGui::ShowDemoWindow(&show);
-	}
-
-	void ImGuiLayer::OnEvent(Event& e)
-	{
-		ImGuiIO& io = ImGui::GetIO();
-		e.Handled |= e.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;
-		e.Handled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
 	}
 
 
