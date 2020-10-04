@@ -1,8 +1,8 @@
 #pragma once
 
-#include "RenderCommand.h"
-#include "OrthographicCamera.h"
-#include "Shader.h"
+#include "Game/Renderer/RenderCommand.h"
+#include "Game/Renderer/OrthographicCamera.h"
+#include "Game/Renderer/Shader.h"
 
 namespace GameEngine {
 
@@ -10,6 +10,7 @@ namespace GameEngine {
 	{
 	public:
 		static void Init();
+		static void Shutdown();
 		static void OnWindowResize(uint32_t width, uint32_t height);
 
 		static void BeginScene(OrthographicCamera& camera);
@@ -24,7 +25,7 @@ namespace GameEngine {
 			glm::mat4 ViewProjectionMatrix;
 		};
 
-		static SceneData* m_SceneData; 
+		static SceneData* s_SceneData; 
 	};
 
 }
