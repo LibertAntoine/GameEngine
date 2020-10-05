@@ -1,12 +1,16 @@
-[submodule "GameEngine/GameEngine/vendor/spdlog"]
+[submodule "spdlog"]
 	path = GameEngine/GameEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
 	branch = v1.x
-[submodule "GameEngine/GameEngine/vendor/glfw/glfw"]
+[submodule "glfw"]
 	path = GameEngine/GameEngine/vendor/glfw/glfw
 	url = https://github.com/glfw/glfw
 	branch = master
-[submodule "GameEngine/GameEngine/vendor/glm"]
+[submodule "imgui"]
+	path = GameEngine/GameEngine/vendor/imgui/imgui
+	url = https://github.com/ocornut/imgui/tree/docking
+	branch = docking
+[submodule "glm"]
 	path = GameEngine/GameEngine/vendor/glm
 	url = https://github.com/g-truc/glm
 	branch = master
