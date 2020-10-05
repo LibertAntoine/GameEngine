@@ -11,9 +11,9 @@ workspace "GameEngine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "GameEngine/vendor/glfw/include"
+IncludeDir["GLFW"] = "GameEngine/vendor/glfw/glfw/include"
 IncludeDir["Glad"] = "GameEngine/vendor/glad/include"
-IncludeDir["imgui"] = "GameEngine/vendor/imgui/"
+IncludeDir["imgui"] = "GameEngine/vendor/imgui/imgui"
 IncludeDir["glm"] = "GameEngine/vendor/glm"
 IncludeDir["stb_image"] = "GameEngine/vendor/stb_image"
 IncludeDir["entt"] = "GameEngine/vendor/enTT/include"
