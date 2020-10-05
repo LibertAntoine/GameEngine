@@ -6,10 +6,6 @@
 	path = GameEngine/GameEngine/vendor/glfw/glfw
 	url = https://github.com/glfw/glfw
 	branch = master
-[submodule "GameEngine/GameEngine/vendor/imgui/imgui"]
-	path = GameEngine/GameEngine/vendor/imgui/imgui
-	url = https://github.com/ocornut/imgui
-	branch = docking
 [submodule "GameEngine/GameEngine/vendor/glm"]
 	path = GameEngine/GameEngine/vendor/glm
 	url = https://github.com/g-truc/glm
